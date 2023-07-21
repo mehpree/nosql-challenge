@@ -12,9 +12,9 @@ Use NoSQL_setup_starter.ipynb for this section of the challenge.
 
 4. Confirm that you created the database and loaded the data properly:
 
-- - List the databases you have in MongoDB. Confirm that uk_food is listed.
-- - List the collection(s) in the database to ensure that establishments is there.
-- - Find and display one document in the establishments collection using find_one and display with pprint.
+ - List the databases you have in MongoDB. Confirm that uk_food is listed.
+ - List the collection(s) in the database to ensure that establishments is there.
+ - Find and display one document in the establishments collection using find_one and display with pprint.
     
 5. Assign the establishments collection to a variable to prepare the collection for use.
 
@@ -34,8 +34,8 @@ The magazine editors have some requested modifications for the database before y
 
 5. Some of the number values are stored as strings, when they should be stored as numbers.
 
-- - Use update_many to convert latitude and longitude to decimal numbers.
-- - Use update_many to convert RatingValue to integer numbers.
+  - Use update_many to convert latitude and longitude to decimal numbers.
+  - Use update_many to convert RatingValue to integer numbers.
 
 # Part 3: Exploratory Analysis
 Eat Safe, Love has specific questions they want you to answer, which will help them find the locations they wish to visit and avoid.
@@ -71,6 +71,14 @@ Hint: You will need to use the aggregation method to answer this.
 
 The first 5 rows of your resulting DataFrame should look something like this:
 ![image](https://github.com/mehpree/nosql-challenge/assets/131678606/eb666e60-113a-42ea-84ab-b0ecad83e92f)
+
+
+### References
+[UK Food Standards Agency](https://www.food.gov.uk/) (2022). UK food hygiene rating data [API](https://ratings.food.gov.uk/open-data/en-GB). Contains public sector information licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+Accessed Sept 9, 2022 and Sept 12, 2022 with the establishment settings as follows: longitude=51.5072, latitude=-0.1276, maxdistancelimit=4567, pagesize=10000, sortoptionkey=distance, pagenumber=(1,2,3,4,5,6,7,8).
+
+#### © 2023 edX Boot Camps LLC
+
 
 
 
