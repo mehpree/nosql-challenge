@@ -1,77 +1,53 @@
-# nosql-challenge
-The UK Food Standards Agency evaluates various establishments across the United Kingdom, and gives them a food hygiene rating. You've been contracted by the editors of a food magazine, Eat Safe, Love, to evaluate some of the ratings data in order to help their journalists and food critics decide where to focus future articles.
+# NoSQL Database and Data Analysis Project
 
-# Part 1: Database and Jupyter Notebook Set Up
-Use NoSQL_setup_starter.ipynb for this section of the challenge.
+## Introduction
 
-1. Import the data provided in the establishments.json file from your Terminal. Name the database uk_food and the collection establishments. Copy the text you used to import your data from your Terminal to a markdown cell in your notebook.
+Welcome to the NoSQL Database and Data Analysis project! In this assignment, I have worked on evaluating food hygiene ratings data provided by the UK Food Standards Agency. The goal of this project is to assist the editors of a food magazine, Eat Safe, Love, in analyzing the ratings data to help their journalists and food critics decide where to focus future articles.
 
-2. Within your notebook, import the libraries you need: PyMongo and Pretty Print (pprint).
+## Part 1: Database and Jupyter Notebook Setup
 
-3. Create an instance of the Mongo Client.
+In this section, I have set up the NoSQL database and prepared the Jupyter Notebook for data analysis. Here are the key steps I've followed:
 
-4. Confirm that you created the database and loaded the data properly:
-
- - List the databases you have in MongoDB. Confirm that uk_food is listed.
- - List the collection(s) in the database to ensure that establishments is there.
- - Find and display one document in the establishments collection using find_one and display with pprint.
+1.  **Data Import:** I imported the data provided in the `establishments.json` file into a MongoDB database named `uk_food` and a collection named `establishments`. The data import was done via the Terminal, and I have documented the import command in a Markdown cell within the notebook.
     
-5. Assign the establishments collection to a variable to prepare the collection for use.
+2.  **Library Imports:** Within the Jupyter Notebook, I imported the necessary Python libraries, including PyMongo for database interaction and Pretty Print (pprint) for displaying data.
+    
+3.  **MongoDB Client:** I created an instance of the MongoDB client to connect to the database.
+    
+4.  **Data Validation:** I confirmed the successful creation of the database and the `establishments` collection by listing the available databases and collections. Additionally, I retrieved and displayed one document from the `establishments` collection using `find_one`.
+    
+5.  **Variable Assignment:** I assigned the `establishments` collection to a variable for further analysis.
+    
 
-# Part 2: Update the Database
-Use NoSQL_setup_starter.ipynb for this section of the challenge.
+## Part 2: Update the Database
 
-The magazine editors have some requested modifications for the database before you can perform any queries or analysis for them. Make the following changes to the establishments collection:
+In this section, I made requested modifications to the database before performing queries or analysis. The following changes were made to the `establishments` collection:
 
-1. An exciting new halal restaurant just opened in Greenwich, but hasn't been rated yet. The magazine has asked you to include it in your analysis. Add the following information to the database:
-![image](https://github.com/mehpree/nosql-challenge/assets/131678606/25c6f5fd-cd00-4d58-b25d-77841f7fd67d)
+1.  **Addition of New Restaurant:** I added a new halal restaurant in Greenwich to the database as per the magazine's request.
+    
+2.  **BusinessTypeID Query:** I found the BusinessTypeID for "Restaurant/Cafe/Canteen" and returned only the BusinessTypeID and BusinessType fields.
+    
+3.  **Update New Restaurant:** I updated the information of the new restaurant with the BusinessTypeID found in the previous step.
+    
+4.  **Deletion of Dover Establishments:** I identified and removed establishments within the Dover Local Authority from the database.
+    
+5.  **Data Type Conversion:** I used `update_many` to convert latitude and longitude to decimal numbers and also to convert RatingValue to integer numbers.
+    
 
-2. Find the BusinessTypeID for "Restaurant/Cafe/Canteen" and return only the BusinessTypeID and BusinessType fields.
+## Part 3: Exploratory Analysis
 
-3. Update the new restaurant with the BusinessTypeID you found.
+In this section, I performed an exploratory analysis of the dataset to answer specific questions posed by Eat Safe, Love. Each question was addressed using MongoDB queries, and the results were presented in a structured manner. Here are the questions I explored:
 
-4. The magazine is not interested in any establishments in Dover, so check how many documents contain the Dover Local Authority. Then, remove any establishments within the Dover Local Authority from the database, and check the number of documents to ensure they were deleted.
+1.  **Establishments with Hygiene Score 20:** Identified establishments with a hygiene score equal to 20.
+    
+2.  **High-Rated Establishments in London:** Found establishments in London with a RatingValue greater than or equal to 4.
+    
+3.  **Top 5 Establishments with RatingValue 5:** Determined the top 5 establishments with a RatingValue of 5, sorted by the lowest hygiene score and nearest to the new restaurant "Penang Flavours."
+    
+4.  **Local Authorities with Hygiene Score 0:** Counted establishments in each Local Authority area with a hygiene score of 0, sorted from highest to lowest. Displayed the top ten local authority areas.
+    
 
-5. Some of the number values are stored as strings, when they should be stored as numbers.
-
-  - Use update_many to convert latitude and longitude to decimal numbers.
-  - Use update_many to convert RatingValue to integer numbers.
-
-# Part 3: Exploratory Analysis
-Eat Safe, Love has specific questions they want you to answer, which will help them find the locations they wish to visit and avoid.
-
-Use NoSQL_analysis_starter.ipynb for this section of the challenge.
-
-Some notes to be aware of while you are exploring the dataset:
-
-- RatingValue refers to the overall rating decided by the Food Authority and ranges from 1-5. The higher the value, the better the rating.
-Note: This field also includes non-numeric values such as 'Pass', where 'Pass' means that the establishment passed their inspection but isn't given a number rating. We will coerce non-numeric values to nulls during the database setup before converting ratings to integers.
-- The scores for Hygiene, Structural, and ConfidenceInManagement work in reverse. This means, the higher the value, the worse the establishment is in these areas.
-Use the following questions to explore the database, and find the answers, so you can provide them to the magazine editors.
-
-Unless otherwise stated, for each question:
-
-- Use count_documents to display the number of documents contained in the result.
-
-- Display the first document in the results using pprint.
-
-- Convert the result to a Pandas DataFrame, print the number of rows in the DataFrame, and display the first 10 rows.
-
-1. Which establishments have a hygiene score equal to 20?
-
-2. Which establishments in London have a RatingValue greater than or equal to 4?
-
-Hint: The London Local Authority has a longer name than "London" so you will need to use $regex as part of your search.
-
-3. What are the top 5 establishments with a RatingValue of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?
-
-4. How many establishments in each Local Authority area have a hygiene score of 0? Sort the results from highest to lowest, and print out the top ten local authority areas.
-
-Hint: You will need to use the aggregation method to answer this.
-
-The first 5 rows of your resulting DataFrame should look something like this:
-![image](https://github.com/mehpree/nosql-challenge/assets/131678606/eb666e60-113a-42ea-84ab-b0ecad83e92f)
-
+This project showcases my skills in working with NoSQL databases, data analysis, and querying MongoDB to derive valuable insights from real-world data. It provides Eat Safe, Love with the information needed to make informed decisions about future articles and restaurant recommendations. Enjoy exploring the world of food hygiene ratings!
 
 ### References
 [UK Food Standards Agency](https://www.food.gov.uk/) (2022). UK food hygiene rating data [API](https://ratings.food.gov.uk/open-data/en-GB). Contains public sector information licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
